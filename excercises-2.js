@@ -45,19 +45,16 @@ console.assert(isVowel('y'), 'error2-3');
 
 function rovarspraket(phrase){
     var letters = phrase.split('');
-    console.log(letters);
-    letters.forEach(function(letter, i, arr){
+    return letters.reduce(function(word, letter, i) {
       if (!isVowel(letter)) {
-        arr.splice(i+1, 0, 'o', letter);
-        console.log(letters);
+        word[i] = letter + 'o' + letter;
+      } else {
+        word[i] = letter;
       }
-    });
-
-
-
-
+      return word;
+    },[]).join('');
 }
-
+console.assert(rovarspraket('hello')==='hohelollolo', 'error 2-4');
 
 // ---------------------
 // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
